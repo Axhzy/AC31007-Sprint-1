@@ -7,19 +7,17 @@ def lambda_handler(event, context):
                               host='bankdatabase.ct2cs466y605.us-east-1.rds.amazonaws.com',
                               database='BankDatabase')
     try:
-       cursor = cnx.cursor()
-       cursor.execute("""
+        cursor = cnx.cursor()
+        cursor.execute("""
           SELECT * FROM atm_data
-       """) #test query
-       result = cursor.fetchall()
+          WHERE atm_identification = 'A021461A'
+        """) #test query
+        result = cursor.fetchall()
     finally:
         cnx.close()
     return {
         'statusCode': 200,
-        'body': json.dumps(result) #as a test returns all fields from database as json
+        'body': result #as a test returns all fields from database as json
     }
-
-
-   
 
 
