@@ -1,5 +1,6 @@
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
   var map = L.map("map").setView([51.505, -0.09], 13);
 
@@ -21,3 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
       marker.bindPopup('<b>' + location.name + '</b>');
   });
 });
+
+var marker = L.marker([51.5, -0.09]).addTo(map);
+
+var popup = L.popup()
+  .setLatLng([51.513, -0.09])
+  .setContent("Closing time : "+"Opening time : " + "This branch is wheelchair accesible")
+  .openOn(map);
+
